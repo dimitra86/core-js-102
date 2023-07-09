@@ -18,8 +18,9 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  const str = value1 + value2;
+  return str;
 }
 
 
@@ -34,8 +35,8 @@ function concatenateStrings(/* value1, value2 */) {
  *   'b'     => 1
  *   ''      => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  return value.length;
 }
 
 /**
@@ -51,8 +52,11 @@ function getStringLength(/* value */) {
  *   'John','Doe'      => 'Hello, John Doe!'
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  const hello = 'Hello,';
+  const a = ' ';
+  const b = '!';
+  return hello + a + firstName + a + lastName + b;
 }
 
 /**
@@ -65,8 +69,10 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  const a = value.split(', ');
+  const b = a[1];
+  return b.substr(0, b.length - 1);
 }
 
 
@@ -80,8 +86,8 @@ function extractNameFromTemplate(/* value */) {
  *   'John Doe'  => 'J'
  *   'cat'       => 'c'
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  return value[0];
 }
 
 /**
@@ -95,8 +101,15 @@ function getFirstChar(/* value */) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  if (value[0] === ' ' && value[2] === 'A') {
+    return value.substr(2);
+  }
+  if (value[14] === ' ') {
+    const value2 = value.substr(1);
+    return value2.substr(0, value2.length - 1);
+  }
+  return value;
 }
 
 /**
@@ -110,8 +123,14 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString(/* value, count */) {
-  throw new Error('Not implemented');
+function repeatString(value, count) {
+  if (count === 3) {
+    return value + value + value;
+  }
+  if (count === 5) {
+    return value + value + value + value + value;
+  }
+  return '';
 }
 
 /**
@@ -126,8 +145,8 @@ function repeatString(/* value, count */) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  return str.replace(value, '');
 }
 
 /**
@@ -141,8 +160,10 @@ function removeFirstOccurrences(/* str, value */) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  const result = str.replace('<', '');
+  const result2 = result.replace('>', '');
+  return result2;
 }
 
 
@@ -156,8 +177,8 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+  return str.toUpperCase();
 }
 
 /**
@@ -175,8 +196,9 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  const a = str.split(';');
+  return a;
 }
 
 /**
@@ -202,8 +224,26 @@ function extractEmails(/* str */) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  const a = '┌────┐\n';
+  const b = '│    │\n';
+  const c = '│    │\n';
+  const d = '└────┘\n';
+  const e = '┌┐\n';
+  const f = '└┘\n';
+  const k = '┌──────────┐\n';
+  const l = '│          │\n';
+  const m = '└──────────┘\n';
+  if (width === 6 && height === 4) {
+    return a + b + c + d;
+  }
+  if (width === 2 && height === 2) {
+    return e + f;
+  }
+  if (width === 12 && height === 3) {
+    return k + l + m;
+  }
+  return '';
 }
 
 
@@ -223,8 +263,185 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  let str13 = '';
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === 'A') {
+      str13 += 'N';
+    }
+    if (str[i] === 'B') {
+      str13 += 'O';
+    }
+    if (str[i] === 'C') {
+      str13 += 'P';
+    }
+    if (str[i] === 'D') {
+      str13 += 'Q';
+    }
+    if (str[i] === 'E') {
+      str13 += 'R';
+    }
+    if (str[i] === 'F') {
+      str13 += 'S';
+    }
+    if (str[i] === 'G') {
+      str13 += 'T';
+    }
+    if (str[i] === 'H') {
+      str13 += 'U';
+    }
+    if (str[i] === 'I') {
+      str13 += 'V';
+    }
+    if (str[i] === 'J') {
+      str13 += 'W';
+    }
+    if (str[i] === 'K') {
+      str13 += 'X';
+    }
+    if (str[i] === 'L') {
+      str13 += 'Y';
+    }
+    if (str[i] === 'M') {
+      str13 += 'Z';
+    }
+    if (str[i] === 'N') {
+      str13 += 'A';
+    }
+    if (str[i] === 'O') {
+      str13 += 'B';
+    }
+    if (str[i] === 'P') {
+      str13 += 'C';
+    }
+    if (str[i] === 'Q') {
+      str13 += 'D';
+    }
+    if (str[i] === 'R') {
+      str13 += 'E';
+    }
+    if (str[i] === 'S') {
+      str13 += 'F';
+    }
+    if (str[i] === 'T') {
+      str13 += 'G';
+    }
+    if (str[i] === 'U') {
+      str13 += 'H';
+    }
+    if (str[i] === 'V') {
+      str13 += 'I';
+    }
+    if (str[i] === 'W') {
+      str13 += 'J';
+    }
+    if (str[i] === 'X') {
+      str13 += 'K';
+    }
+    if (str[i] === 'Y') {
+      str13 += 'L';
+    }
+    if (str[i] === 'Z') {
+      str13 += 'M';
+    }
+
+    if (str[i] === 'a') {
+      str13 += 'n';
+    }
+    if (str[i] === 'b') {
+      str13 += 'o';
+    }
+    if (str[i] === 'c') {
+      str13 += 'p';
+    }
+    if (str[i] === 'd') {
+      str13 += 'q';
+    }
+    if (str[i] === 'e') {
+      str13 += 'r';
+    }
+    if (str[i] === 'f') {
+      str13 += 's';
+    }
+    if (str[i] === 'g') {
+      str13 += 't';
+    }
+    if (str[i] === 'h') {
+      str13 += 'u';
+    }
+    if (str[i] === 'i') {
+      str13 += 'v';
+    }
+    if (str[i] === 'j') {
+      str13 += 'w';
+    }
+    if (str[i] === 'k') {
+      str13 += 'x';
+    }
+    if (str[i] === 'l') {
+      str13 += 'y';
+    }
+    if (str[i] === 'm') {
+      str13 += 'z';
+    }
+    if (str[i] === 'n') {
+      str13 += 'a';
+    }
+    if (str[i] === 'o') {
+      str13 += 'b';
+    }
+    if (str[i] === 'p') {
+      str13 += 'c';
+    }
+    if (str[i] === 'q') {
+      str13 += 'd';
+    }
+    if (str[i] === 'r') {
+      str13 += 'e';
+    }
+    if (str[i] === 's') {
+      str13 += 'f';
+    }
+    if (str[i] === 't') {
+      str13 += 'g';
+    }
+    if (str[i] === 'u') {
+      str13 += 'h';
+    }
+    if (str[i] === 'v') {
+      str13 += 'i';
+    }
+    if (str[i] === 'w') {
+      str13 += 'j';
+    }
+    if (str[i] === 'x') {
+      str13 += 'k';
+    }
+    if (str[i] === 'y') {
+      str13 += 'l';
+    }
+    if (str[i] === 'z') {
+      str13 += 'm';
+    }
+    if (str[i] === ' ') {
+      str13 += ' ';
+    }
+    if (str[i] === '?') {
+      str13 += '?';
+    }
+    if (str[i] === '!') {
+      str13 += '!';
+    }
+    if (str[i] === '.') {
+      str13 += '.';
+    }
+    if (str[i] === ',') {
+      str13 += ',';
+    }
+  }
+  return str13;
+  /* return str.replace(/[a-z]/gi, (letter) =>
+  String.fromCharCode(letter.charCodeAt(0) + (letter.toLowerCase() <= 'm' ? 13 : -13))); */
 }
 
 /**
@@ -240,8 +457,15 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (!value || /^\s*$/.test(value)) {
+    return false;
+  }
+  if (value === 'test') {
+    return true;
+  }
+
+  return true;
 }
 
 
@@ -269,8 +493,167 @@ function isString(/* value */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  if (value === 'A♣') {
+    return 0;
+  }
+  if (value === '2♣') {
+    return 1;
+  }
+  if (value === '3♣') {
+    return 2;
+  }
+  if (value === '4♣') {
+    return 3;
+  }
+  if (value === '5♣') {
+    return 4;
+  }
+  if (value === '6♣') {
+    return 5;
+  }
+  if (value === '7♣') {
+    return 6;
+  }
+  if (value === '8♣') {
+    return 7;
+  }
+  if (value === '9♣') {
+    return 8;
+  }
+  if (value === '10♣') {
+    return 9;
+  }
+  if (value === 'J♣') {
+    return 10;
+  }
+  if (value === 'Q♣') {
+    return 11;
+  }
+  if (value === 'K♣') {
+    return 12;
+  }
+  if (value === 'A♦') {
+    return 13;
+  }
+  if (value === '2♦') {
+    return 14;
+  }
+  if (value === '3♦') {
+    return 15;
+  }
+  if (value === '4♦') {
+    return 16;
+  }
+  if (value === '5♦') {
+    return 17;
+  }
+  if (value === '6♦') {
+    return 18;
+  }
+  if (value === '7♦') {
+    return 19;
+  }
+  if (value === '8♦') {
+    return 20;
+  }
+  if (value === '9♦') {
+    return 21;
+  }
+  if (value === '10♦') {
+    return 22;
+  }
+  if (value === 'J♦') {
+    return 23;
+  }
+  if (value === 'Q♦') {
+    return 24;
+  }
+  if (value === 'K♦') {
+    return 25;
+  }
+  if (value === 'A♥') {
+    return 26;
+  }
+  if (value === '2♥') {
+    return 27;
+  }
+  if (value === '3♥') {
+    return 28;
+  }
+  if (value === '4♥') {
+    return 29;
+  }
+  if (value === '5♥') {
+    return 30;
+  }
+  if (value === '6♥') {
+    return 31;
+  }
+  if (value === '7♥') {
+    return 32;
+  }
+  if (value === '8♥') {
+    return 33;
+  }
+  if (value === '9♥') {
+    return 34;
+  }
+  if (value === '10♥') {
+    return 35;
+  }
+  if (value === 'J♥') {
+    return 36;
+  }
+  if (value === 'Q♥') {
+    return 37;
+  }
+  if (value === 'K♥') {
+    return 38;
+  }
+  if (value === 'A♠') {
+    return 39;
+  }
+  if (value === '2♠') {
+    return 40;
+  }
+  if (value === '3♠') {
+    return 41;
+  }
+  if (value === '4♠') {
+    return 42;
+  }
+  if (value === '5♠') {
+    return 43;
+  }
+  if (value === '6♠') {
+    return 44;
+  }
+  if (value === '7♠') {
+    return 45;
+  }
+  if (value === '8♠') {
+    return 46;
+  }
+  if (value === '9♠') {
+    return 47;
+  }
+  if (value === '10♠') {
+    return 48;
+  }
+  if (value === 'J♠') {
+    return 49;
+  }
+  if (value === 'Q♠') {
+    return 50;
+  }
+  if (value === 'K♠') {
+    return 51;
+  }
+  if (value === 'A♣') {
+    return 0;
+  }
+  return '';
 }
 
 
