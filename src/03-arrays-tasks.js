@@ -371,8 +371,18 @@ function sortDigitNamesByNumericOrder(arr) {
  *   [ -1, 1, -1, 1 ]      => 0
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
-function getItemsSum(/* arr */) {
-  throw new Error('Not implemented');
+function getItemsSum(arr) {
+  let sum = 0;
+  // let sum1 = 0;
+
+  arr.map((item, index, array) => {
+  // возвращается новое значение вместо элемента
+  // sum=sum+array[index];
+    sum += array[index];
+    return sum;
+  });
+
+  return sum;
 }
 
 /**
