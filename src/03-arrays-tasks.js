@@ -461,8 +461,41 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  arr.sort((a, b) => {
+    const countryA = a.country.toUpperCase(); // ignore upper and lowercase
+    const countryB = b.country.toUpperCase(); // ignore upper and lowercase
+    if (countryA < countryB) {
+      return -1;
+    }
+    if (countryA > countryB) {
+      return 1;
+    }
+
+    // names must be equal
+    return 0;
+  });
+
+  arr.sort((a, b) => {
+    const countryA = a.country.toUpperCase(); // ignore upper and lowercase
+    const countryB = b.country.toUpperCase(); // ignore upper and lowercase
+    const cityA = a.city.toUpperCase(); // ignore upper and lowercase
+    const cityB = b.city.toUpperCase(); // ignore upper and lowercase
+
+    if (countryA === countryB) {
+      if (cityA < cityB) {
+        return -1;
+      }
+      if (cityA > cityB) {
+        return 1;
+      }
+
+      // names must be equal
+      return 0;
+    }
+    return arr;
+  });
+  return arr;
 }
 
 /**
